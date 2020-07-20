@@ -2,6 +2,9 @@ function passwordStrengthChecker() {
   const passwordInput = document.getElementById('password');
   const meter = document.getElementById('password-strength-meter');
   const text = document.getElementById('password-strength-text');
+  const signupButton = document.getElementById('signup');
+  const disabledClasses = ['opacity-50', 'cursor-not-allowed'];
+
   const strength = {
     0: 'Worst',
     1: 'Bad',
@@ -16,6 +19,14 @@ function passwordStrengthChecker() {
     const score = checkPasswordStrength(value);
     meter.value = score;
     text.innerHTML = strength[score];
+    if (score >= 3) {
+      signupButton.disabled = false;
+      signupButton.classList.remove('opacity-50', 'cursor-not-allowed');
+    } else {
+      true;
+      signupButton.disabled = true;
+      signupButton.classList.add('opacity-50', 'cursor-not-allowed');
+    }
   });
 }
 
