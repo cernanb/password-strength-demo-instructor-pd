@@ -3,7 +3,6 @@ function passwordStrengthChecker() {
   const meter = document.getElementById('password-strength-meter');
   const text = document.getElementById('password-strength-text');
   const signupButton = document.getElementById('signup');
-  const disabledClasses = ['opacity-50', 'cursor-not-allowed'];
 
   const strength = {
     0: 'Worst',
@@ -13,9 +12,10 @@ function passwordStrengthChecker() {
     4: 'Strong',
   };
 
-  password.addEventListener('input', () => {
-    const value = password.value;
-    console.log(value);
+  passwordInput.addEventListener('input', (e) => {
+    const { value } = passwordInput;
+    // could also be
+    // const { value } = e.target
     const score = checkPasswordStrength(value);
     meter.value = score;
     text.innerHTML = strength[score];
